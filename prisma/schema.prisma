@@ -8,7 +8,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Mahasiswa {
+model MahasiswaDiscoverIT {
   nim        Int          @id
   nama       String
   prodi      String
@@ -27,7 +27,7 @@ model Peminjaman {
   id Int @id @default(autoincrement())
 
   id_mhs Int
-  mhs    Mahasiswa @relation(fields: [id_mhs], references: [nim])
+  mhs    MahasiswaDiscoverIT @relation(fields: [id_mhs], references: [nim])
 
   id_buku Int
   buku    Buku @relation(fields: [id_buku], references: [id])

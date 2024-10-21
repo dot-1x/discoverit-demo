@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 
 export async function GET() {
   console.log("Mengambil data...")
-  const mahasiswa = await prisma.mahasiswa.findMany()
+  const mahasiswa = await prisma.mahasiswaDiscoverIT.findMany()
   console.log(`berhasil mengambil ${mahasiswa.length} data mahasiswa`)
   return Response.json({
     status: "ok",
@@ -15,7 +15,7 @@ export async function GET() {
 export async function POST(req: Request) {
   const data = await req.json()
   console.log("Data diterima: ", data)
-  await prisma.mahasiswa.create({
+  await prisma.mahasiswaDiscoverIT.create({
     data: {
       nim: parseInt(data.nim),
       nama: data.nama,
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   const data = await req.json()
   console.log("Data diterima: ", data)
-  const newdata = await prisma.mahasiswa.update({
+  const newdata = await prisma.mahasiswaDiscoverIT.update({
     where: {
       nim: parseInt(data.nim),
     },
@@ -45,7 +45,7 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   const data = await req.json()
   console.log("Data diterima: ", data)
-  await prisma.mahasiswa.delete({
+  await prisma.mahasiswaDiscoverIT.delete({
     where: {
       nim: parseInt(data.nim),
     },
