@@ -34,3 +34,4 @@ ALTER TABLE "Peminjaman" ADD CONSTRAINT "Peminjaman_id_mhs_fkey" FOREIGN KEY ("i
 
 -- AddForeignKey
 ALTER TABLE "Peminjaman" ADD CONSTRAINT "Peminjaman_id_buku_fkey" FOREIGN KEY ("id_buku") REFERENCES "Buku"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
