@@ -1,0 +1,37 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Mahasiswa {
+  nim        Int          @id
+  nama       String
+  prodi      String
+  Peminjaman Peminjaman[]
+}
+
+model Buku {
+  id           Int          @id @default(autoincrement())
+  judul        String
+  penulis      String
+  tahun_terbit DateTime
+  Peminjaman   Peminjaman[]
+}
+
+model Peminjaman {
+  id Int @id @default(autoincrement())
+
+  id_mhs Int
+  mhs    Mahasiswa @relation(fields: [id_mhs], references: [nim])
+
+  id_buku Int
+  buku    Buku @relation(fields: [id_buku], references: [id])
+
+  tanggal_pinjam  DateTime
+  tanggal_kembali DateTime
+  denda           Int
+}
